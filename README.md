@@ -1,32 +1,37 @@
-# Pundit Studio — Deployment Guide
+# Pundit Studio — Go-live guide
 
-Files
-- index.html  → the whole website (public site, student portal, quizzes, admin)
-- netlify.toml → makes /admin, /portal, /quizzes work as real paths
-- schema.sql  → database tables, security rules, 50-seat limit
+The backend is ALREADY set up and connected:
+- Supabase project "Pundit Studio Training" (database, security rules, 50-seat limit, admin account)
+- index.html already contains the project URL and public (anon) key.
 
-## 1. Create the database (Supabase, free)
-1. Create a project at supabase.com.
-2. SQL Editor → paste all of schema.sql → Run.
-3. Authentication → Users → Add user. Use your admin email + a strong password.
-   This email/password is the admin login at /admin (username = that email).
-4. Project Settings → API → copy the Project URL and the anon public key.
+## Deploy on Vercel (recommended)
+Option A — dashboard (no tools needed)
+1. Put index.html and vercel.json in a new GitHub repository (netlify.toml can stay; Vercel ignores it).
+2. On https://vercel.com/new, import that repository.
+3. Framework Preset: "Other". Build command: leave empty. Output directory: leave empty (root).
+4. Click Deploy. You get a public https://your-project.vercel.app link.
 
-## 2. Connect the site
-Open index.html and find this line near the top:
-  window.PUNDIT_CONFIG={supabaseUrl:"",supabaseKey:""};
-Paste your URL and anon key between the quotes. Save.
+Option B — Vercel CLI (fastest)
+1. Install Node.js, then run: npm i -g vercel
+2. Unzip this package, open a terminal in the folder, run: vercel
+3. Answer the prompts (framework: Other, no build). Run "vercel --prod" for the production link.
 
-## 3. Deploy (Netlify)
-- Drag the folder with index.html and netlify.toml onto app.netlify.com/drop, or
-- Connect a Git repo containing these files.
+## Deploy on Netlify (alternative)
+Drag the folder (index.html + netlify.toml) onto https://app.netlify.com/drop
 
-## 4. Use it
-- Public site:  yoursite.netlify.app
-- Student portal: /portal   Quizzes: /quizzes   Admin: /admin
-- Admin: approve students, upload certificate and flier, create quizzes and assignments.
+## Pages
+/ public site and registration · /portal student portal · /quizzes quizzes and leaderboards · /admin admin sign-in
+(quiz and assignment links look like /#/quiz/ID and work on any host)
 
-## Notes
-- Do not put the Supabase service_role key in index.html. Only the anon key.
-- If PUNDIT_CONFIG is left empty the site runs in demo mode (data stays in each browser).
-- Changing the Supabase admin password: Authentication → Users.
+## First-time admin steps
+1. Sign in at /admin (username = admin email).
+2. Registrations → approve students after payment.
+3. Certificate tab → upload template + signature, place name, tick "Release certificates", Save.
+4. Flier tab → upload flier, place the photo area, Save.
+5. Quizzes / Assignments → create and share the links.
+
+## Security notes
+- Change the admin password after first login (Supabase → Authentication → Users).
+- Only the anon key is in index.html. Never add the service_role key.
+- Only the admin email has full data access; the public can only register, submit, and read quizzes/leaderboards.
+- Custom domain: add it in Vercel → Project → Settings → Domains.

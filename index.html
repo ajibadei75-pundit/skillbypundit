@@ -184,11 +184,33 @@ h1{font-size:clamp(28px,6.2vw,54px)}h2{font-size:clamp(24px,4.4vw,36px)}
 @media(hover:none){.card:hover{border-color:var(--bd)}.btn:hover{filter:none}}
 @media print{nav,#toasts,.bg,.skip,footer,.actions{display:none!important}body{background:#fff;color:#000}.card{box-shadow:none}.rv{opacity:1;transform:none}}
 .prg .actions{margin-top:var(--s4)}.prg .actions .btn{margin-top:0!important}
+
+/* ===== final polish: clarity, visibility, whitespace ===== */
+:root{--mut:#47524C;--bd:#D3DCD7;--bg2:#F3F7F5}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--mut:#B4C2BA;--bd:#2C3C33}}
+:root[data-theme="dark"]{--mut:#B4C2BA;--bd:#2C3C33}
+body{font-size:16px;line-height:1.7}
+.card p,.card li,.lead,.note{color:var(--mut)}
+h1,h2,h3{font-weight:800}.k{margin-bottom:var(--s2)}
+section{padding:clamp(48px,7vw,88px) 0}
+.lead{font-size:17px;max-width:620px}
+.hero{padding:clamp(40px,7vw,88px) 0}
+.hero p.s{font-size:18px;line-height:1.7;max-width:540px}
+.quick{padding:var(--s6) 0;border-bottom:1px solid var(--bd);background:var(--bg)}
+.qgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:var(--s4)}
+.qk{display:flex;flex-direction:column;gap:var(--s1);padding:var(--s4) var(--s5);border:1px solid var(--bd);border-radius:14px;background:var(--card);text-decoration:none;color:var(--tx);transition:border-color .2s,transform .2s}
+.qk:hover{border-color:var(--g);transform:translateY(-2px)}.qk b{font:700 16px Montserrat,Inter,sans-serif;color:var(--g)}.qk span{font-size:14px;color:var(--mut)}
+.card{box-shadow:0 1px 2px rgba(16,32,24,.06)}
+input,select,textarea{border-color:#B9C5BE}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]) input,:root:not([data-theme="light"]) select,:root:not([data-theme="light"]) textarea{border-color:#3B4E44}}
+:root[data-theme="dark"] input,:root[data-theme="dark"] select,:root[data-theme="dark"] textarea{border-color:#3B4E44}
+.steps span{font-size:13px}
+footer{padding:var(--s7) 0}
 </style>
 </head>
 <body>
 <a class="skip" href="#learn">Skip to content</a>
-<script>window.PUNDIT_CONFIG={supabaseUrl:"",supabaseKey:""};</script>
+<script>window.PUNDIT_CONFIG={supabaseUrl:"https://njpqidrqnpwfumwdrnsx.supabase.co",supabaseKey:"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5qcHFpZHJxbnB3ZnVtd2RybnN4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE1NDEwMTQsImV4cCI6MjEwNzExNzAxNH0.5t6V7RZDfPljqEJgQIfDk9acDM97lkGBEdyJFidLdmg"};</script>
 <div id="toasts" role="status" aria-live="polite"></div>
 <nav><div class="wrap"><img src="data:image/png;base64,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" alt="Pundit Studio"><b>PUNDIT STUDIO</b>
 <div class="l"><a class="h" href="#learn">What you'll learn</a><a class="h" href="#curriculum">Curriculum</a><a class="h" href="#details">Details</a><a class="h" href="#faq">FAQ</a><a class="h" href="#/quizzes">Quizzes</a><a class="btn o sm" href="#/portal">Student portal</a><a class="btn sm" href="#register">Register</a><button class="btn o sm" id="tt" aria-label="Toggle day or night mode">Dark</button></div></div></nav>
@@ -201,6 +223,12 @@ h1{font-size:clamp(28px,6.2vw,54px)}h2{font-size:clamp(24px,4.4vw,36px)}
 <div class="facts"><div><b>8 days</b>Physical classes</div><div><b>6 days</b>Online support</div><div><b>₦10,000</b>Per person</div></div></div>
 <div class="card seat"><small>SEATS REMAINING</small><div class="n" id="left" aria-live="polite">50</div><div class="bar"><i id="bar"></i></div><div style="color:var(--mut);font-size:13px;margin-bottom:12px" id="used">0 of 50 registered</div><span class="pill" id="state">Registration open</span></div></div></header>
 
+<section class="quick"><div class="wrap"><div class="qgrid">
+<a class="qk" href="#register"><b>Register</b><span>Reserve your seat in two minutes</span></a>
+<a class="qk" href="#/portal"><b>Student portal</b><span>Certificate, flier and quizzes</span></a>
+<a class="qk" href="#/quizzes"><b>Quizzes</b><span>Take a quiz and see the leaderboard</span></a>
+<a class="qk" href="#curriculum"><b>Curriculum</b><span>See what you will learn</span></a>
+</div></div></section>
 <section id="learn" class="rv"><div class="wrap"><div class="k">Outcomes</div><h2>What you will be able to do</h2><p class="lead">Practical skills you can use for school, business and freelance work from day one.</p>
 <div class="grid">
 <div class="card"><h3>Design in Photoshop</h3><p>Edit, composite and design flyers, posters and social content to a professional standard.</p></div>
@@ -260,7 +288,7 @@ h1{font-size:clamp(28px,6.2vw,54px)}h2{font-size:clamp(24px,4.4vw,36px)}
 
 <main id="admin" hidden><div class="wrap">
 <div id="login" class="card lg"><h2 style="margin:0 0 6px">Admin sign in</h2><p class="note" style="margin:0 0 18px">Authorised staff only.</p>
-<form id="lf" novalidate><div><label for="lu">Username</label><input id="lu" autocomplete="username"></div><div><label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password"></div><button class="btn" style="width:100%">Sign in</button></form><p class="note" id="lmode"></p></div>
+<form id="lf" novalidate><div><label for="lu">Username (email)</label><input id="lu" type="email" autocomplete="username" placeholder="admin email"></div><div><label for="lp">Password</label><input id="lp" type="password" autocomplete="current-password"></div><button class="btn" style="width:100%">Sign in</button></form><p class="note" id="lmode"></p></div>
 <div id="dash" hidden>
 <div class="dh"><h2>Dashboard</h2><span class="pill" id="dmode"></span><span style="flex:1"></span><button class="btn o sm" id="refresh">Refresh</button><button class="btn o sm" id="logout">Sign out</button></div>
 <div class="tabs" id="tabs"><button class="on" data-p="p-ov">Overview</button><button data-p="p-rg">Registrations</button><button data-p="p-as">Assignments</button><button data-p="p-qz">Quizzes</button><button data-p="p-ce">Certificate</button><button data-p="p-fl">Flier</button><button data-p="p-st">Announcement</button></div>
